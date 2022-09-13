@@ -23,7 +23,7 @@ title: "Related HTTP Origins"
 category: std
 
 docname: draft-pardue-httpbis-related-origins-latest
-submissiontype: IETF 
+submissiontype: IETF
 number:
 date:
 consensus: true
