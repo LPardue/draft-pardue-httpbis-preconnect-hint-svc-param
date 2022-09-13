@@ -1270,8 +1270,9 @@ limit state or resource commitment based on this information. For example, a
 client could track how often related origins are matched to related resources.
 Notably, the scope of relationships is at the origin level, not any other
 component that might later comprise a URI that is to be fetched. As such,
-constraining the set or related origins to those that are likely to be used by a
-client can help avoid commitment of resources that might subsequently go unused.<a href="#section-3-7" class="pilcrow">¶</a></p>
+constraining the set of values in the <code>related</code> parameter, to those that are
+most likely to be used by a client, can help avoid commitment of resources that
+might subsequently go unused.<a href="#section-3-7" class="pilcrow">¶</a></p>
 <p id="section-3-8">HTTP resource relationships might be restricted to authorized clients. Exposing
 those related origins to unauthorised DNS clients could leak sensitive
 information. Therefore, the <code>related</code> SvcParmKey <span class="bcp14">SHOULD NOT</span> contain origins that
