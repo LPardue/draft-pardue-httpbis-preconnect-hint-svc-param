@@ -8,16 +8,16 @@ number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
+area: "Applications and Real-Time"
+workgroup: "HTTP"
 keyword:
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: LPardue/REPO
-  latest: https://example.com/LATEST
+  group: "HTTP"
+  type: "Working Group"
+  mail: "ietf-http-wg@w3.org"
+  arch: "https://lists.w3.org/Archives/Public/ietf-http-wg/"
+  github: "LPardue/draft-pardue-httpbis-related-origins"
+  latest: "https://LPardue.github.io/draft-pardue-httpbis-related-origins/draft-pardue-httpbis-related-origins.html"
 
 author:
  -
