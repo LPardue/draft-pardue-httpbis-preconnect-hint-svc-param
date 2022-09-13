@@ -1,6 +1,6 @@
 ---
 title: "Related HTTP Origins"
-category: std
+category: exp
 
 docname: draft-pardue-httpbis-related-origins-latest
 submissiontype: IETF
@@ -32,10 +32,13 @@ informative:
 --- abstract
 
 HTTP resources from one origin often have relationships to resources on other
-origins. This document defines the "related" SvcParamKey for SVCB, to indicate
-origins that are related to the current origin. Clients can use this information
-to prepare connections, with the expectation that they will be used to fetch
-related resources.
+origins. This document outlines how a "related" SvcParamKey for SVCB, could be
+used to indicate origins that are related to the current origin. Clients could
+use this information to prepare connections, with the expectation that they will
+be used to fetch related resources. However, this information is not provided by
+the authenticated origin itself and so presents privacy problems. Hence, it
+probably shouldn't be done unless other mechanisms can be used to establish
+equivalent trust.
 
 
 --- middle
@@ -121,6 +124,13 @@ could use this information to help maintain a connection pool and, where needed,
 proactively create or keep open connections to those origins in anticipation of
 being used.
 
+There are serious privacy considerations to make when using any related origin
+information provided via the DNS. The records are presented by resolvers that
+act on behalf of, but are not authoritative for, the origin. As such, the
+resolvers could present unauthenticated information that could cause a client to
+take actions that the authenticated origin would not. This could be abused to
+leak information about the client.
+
 The `related` SvcParamKey is a hint and could contain stale, incorrect or
 superfluous information. A client SHOULD implement checks and heuristics that
 limit state or resource commitment based on this information. For example, a
@@ -131,30 +141,28 @@ constraining the set of values in the `related` parameter, to those that are
 most likely to be used by a client, can help avoid commitment of resources that
 might subsequently go unused.
 
-HTTP resource relationships might be restricted to authorized clients. Exposing
-those related origins to unauthorised DNS clients could leak sensitive
-information. Therefore, the `related` SvcParmKey SHOULD NOT contain origins that
-relate to information that would otherwise only be accessible to authorized
-clients.
+Knowledge of HTTP resource relationships might be restricted to authorized
+clients. Exposing those related origins to unauthorised DNS clients could leak
+sensitive information. Therefore, the `related` SvcParmKey SHOULD NOT contain
+origins that relate to information that would otherwise only be accessible to
+authorized clients.
 
-# Security Considerations
+# Security and Privacy Considerations
 
-The parameter reveals information about the relationships of resources hosted on
-a server. While this information is typically already available to any client
-that visits the server, some resources may only be discoverable by authorized
-clients. Therefore, the set of related origins
+Information about origin relationships is typcially presented by the
+authenticated origin itself. Delegating this information to an unauthenticated
+and untrusted DNS resolver provides opportunities to manipulate client
+behaviour, which could risk privacy problems; see {{related-param}}.
+
+The parameter reveals information about the relationships
+of resources hosted on a server. While this information is typically already
+available to any client that visits the server, some resources may only be
+discoverable by authorized clients. Guidance for managing this is given in
+{{related-param}}.
 
 # IANA Considerations
 
-Please add this entry to the Service Binding (SVCB) Parameter Registry:
-
-Number: TBD
-
-Name: related
-
-Meaning: Related origins to this RR
-
-Format Reference: This document
+None. We probably don't want to do this.
 
 
 --- back
@@ -166,3 +174,6 @@ This document is based on one of the options described by Barry Pollard's ["Even
 earlier connection
 hints"](https://docs.google.com/document/d/1ApILvaFpZPGx6NkqhPvlqni6kTaWfcY6xSEuXg8XdiA/edit#heading=h.fxvrme9c9xpm)
 proposal presented to the Web Perf WG at TPAC 2022.
+
+Thanks to Chris Wood for a providing insight into the privacy implications of
+this design.
