@@ -1192,7 +1192,7 @@ resources.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">In some cases, a server may be authoritative for several origins. HTTP/2
 <span>[<a href="#RFC9113" class="xref">RFC9113</a>]</span> and HTTP/3 <span>[<a href="#RFC9114" class="xref">RFC9114</a>]</span> allow clients to coalesce different origins
 onto the same connection when certain conditions are met. The ORIGIN frame
-(<span>[<a href="#RFC8336" class="xref">RFC8336</a>]</span> and <span>[<a href="#I-D.ietf-httpbis-origin-h3" class="xref">I-D.ietf-httpbis-origin-h3</a>]</span> enhances this further. These
+(<span>[<a href="#RFC8336" class="xref">RFC8336</a>]</span> and <span>[<a href="#I-D.ietf-httpbis-origin-h3" class="xref">I-D.ietf-httpbis-origin-h3</a>]</span>) enhances this further. These
 techniques can help minimize perceived latency by eliminating connection setup
 time entirely, but they apply only for the subset of origins that can safely be
 coalesced.<a href="#section-1-2" class="pilcrow">¶</a></p>
@@ -1200,13 +1200,13 @@ coalesced.<a href="#section-1-2" class="pilcrow">¶</a></p>
 relationships. A server can emit interim responses to help the client start
 making preparations, such as creating new connections, while it prepares a final
 response. Where related resources reside on third-party origins, this technique
-helps minimize perceived latency by providing the client with information about
+helps minimize perceived latency by providing the client with information
 as early as possible in the HTTP message exchange. Thus it fills a capability
 gap left by coalescing. However, it is still dependent on the timing of message
 exchanges, which might affect performance in practice.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">It is common for a single origin to have a stable set of related origins, even
 if the resources fetched from those origins are more volatile. For example,
-third-part resource CDNS, or content sub-domains under the same top-level
+third-part resource CDNs, or content sub-domains under the same top-level
 origin.  There is an opportunity to reduce performance delays caused by the
 delayed run-time learning of these relationships, even in light of the
 techniques described above.<a href="#section-1-4" class="pilcrow">¶</a></p>
@@ -1257,21 +1257,21 @@ represented in an additional RR as:<a href="#section-3-4" class="pilcrow">¶</a>
 www.example.com IN HTTPS 1 . alpn=h2,h2 related=example.com
 </pre><a href="#section-3-5" class="pilcrow">¶</a>
 </div>
-<p id="section-3-6">Clients that learn about related origins <span class="bcp14">MAY</span> this information to make whatever
-preparations they deem fit. For instance, they could use it to perform the same
-connection coalescing authority checks (<span>[<a href="#RFC9113" class="xref">RFC9113</a>]</span> and <span>[<a href="#RFC9114" class="xref">RFC9114</a>]</span>) that would
-otherwise happen later in a connection lifecycle. Similarly, they could use
-this information to help maintain a connection pool, and where needed
-proactively create or keep open connections to those origins in anticipation
-of being used.<a href="#section-3-6" class="pilcrow">¶</a></p>
-<p id="section-3-7">The <code>related</code> SvcParamKey is a hint and could contain stale or incorrect
-information. A client <span class="bcp14">SHOULD</span> implement checks and heuristics that limit state or
-resource commitment based on this information. For example, a client could track
-how often related origins are matched to related resources. Notably, the scope
-of relationships is at the origin level, not any other component that might
-later comprise a URI that is to be fetched. As such, constraining the set or
-related origins to those that are likely to be used by a client can help avoid
-commitment of resources that might subsequently go unused.<a href="#section-3-7" class="pilcrow">¶</a></p>
+<p id="section-3-6">Clients that learn about related origins <span class="bcp14">MAY</span> use this information to make
+whatever preparations they deem fit. For instance, they could use it to perform
+the same connection coalescing authority checks (<span>[<a href="#RFC9113" class="xref">RFC9113</a>]</span> and <span>[<a href="#RFC9114" class="xref">RFC9114</a>]</span>)
+that would otherwise happen later in a connection lifecycle. Similarly, they
+could use this information to help maintain a connection pool and, where needed,
+proactively create or keep open connections to those origins in anticipation of
+being used.<a href="#section-3-6" class="pilcrow">¶</a></p>
+<p id="section-3-7">The <code>related</code> SvcParamKey is a hint and could contain stale, incorrect or
+superfluous information. A client <span class="bcp14">SHOULD</span> implement checks and heuristics that
+limit state or resource commitment based on this information. For example, a
+client could track how often related origins are matched to related resources.
+Notably, the scope of relationships is at the origin level, not any other
+component that might later comprise a URI that is to be fetched. As such,
+constraining the set or related origins to those that are likely to be used by a
+client can help avoid commitment of resources that might subsequently go unused.<a href="#section-3-7" class="pilcrow">¶</a></p>
 <p id="section-3-8">HTTP resource relationships might be restricted to authorized clients. Exposing
 those related origins to unauthorised DNS clients could leak sensitive
 information. Therefore, the <code>related</code> SvcParmKey <span class="bcp14">SHOULD NOT</span> contain origins that
