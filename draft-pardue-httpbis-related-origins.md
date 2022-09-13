@@ -127,8 +127,9 @@ limit state or resource commitment based on this information. For example, a
 client could track how often related origins are matched to related resources.
 Notably, the scope of relationships is at the origin level, not any other
 component that might later comprise a URI that is to be fetched. As such,
-constraining the set or related origins to those that are likely to be used by a
-client can help avoid commitment of resources that might subsequently go unused.
+constraining the set of values in the `related` parameter, to those that are
+most likely to be used by a client, can help avoid commitment of resources that
+might subsequently go unused.
 
 HTTP resource relationships might be restricted to authorized clients. Exposing
 those related origins to unauthorised DNS clients could leak sensitive
