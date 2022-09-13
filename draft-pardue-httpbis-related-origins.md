@@ -53,7 +53,7 @@ resources.
 In some cases, a server may be authoritative for several origins. HTTP/2
 {{?RFC9113}} and HTTP/3 {{?RFC9114}} allow clients to coalesce different origins
 onto the same connection when certain conditions are met. The ORIGIN frame
-({{?RFC8336}} and {{?I-D.ietf-httpbis-origin-h3}} enhances this further. These
+({{?RFC8336}} and {{?I-D.ietf-httpbis-origin-h3}}) enhances this further. These
 techniques can help minimize perceived latency by eliminating connection setup
 time entirely, but they apply only for the subset of origins that can safely be
 coalesced.
@@ -62,14 +62,14 @@ The 103 (Early Hints) status code {{?RFC8297}} can convey hints about resource
 relationships. A server can emit interim responses to help the client start
 making preparations, such as creating new connections, while it prepares a final
 response. Where related resources reside on third-party origins, this technique
-helps minimize perceived latency by providing the client with information about
+helps minimize perceived latency by providing the client with information
 as early as possible in the HTTP message exchange. Thus it fills a capability
 gap left by coalescing. However, it is still dependent on the timing of message
 exchanges, which might affect performance in practice.
 
 It is common for a single origin to have a stable set of related origins, even
 if the resources fetched from those origins are more volatile. For example,
-third-part resource CDNS, or content sub-domains under the same top-level
+third-part resource CDNs, or content sub-domains under the same top-level
 origin.  There is an opportunity to reduce performance delays caused by the
 delayed run-time learning of these relationships, even in light of the
 techniques described above.
@@ -113,22 +113,22 @@ represented in an additional RR as:
 www.example.com IN HTTPS 1 . alpn=h2,h2 related=example.com
 ~~~
 
-Clients that learn about related origins MAY this information to make whatever
-preparations they deem fit. For instance, they could use it to perform the same
-connection coalescing authority checks ({{RFC9113}} and {{RFC9114}}) that would
-otherwise happen later in a connection lifecycle. Similarly, they could use
-this information to help maintain a connection pool, and where needed
-proactively create or keep open connections to those origins in anticipation
-of being used.
+Clients that learn about related origins MAY use this information to make
+whatever preparations they deem fit. For instance, they could use it to perform
+the same connection coalescing authority checks ({{RFC9113}} and {{RFC9114}})
+that would otherwise happen later in a connection lifecycle. Similarly, they
+could use this information to help maintain a connection pool and, where needed,
+proactively create or keep open connections to those origins in anticipation of
+being used.
 
-The `related` SvcParamKey is a hint and could contain stale or incorrect
-information. A client SHOULD implement checks and heuristics that limit state or
-resource commitment based on this information. For example, a client could track
-how often related origins are matched to related resources. Notably, the scope
-of relationships is at the origin level, not any other component that might
-later comprise a URI that is to be fetched. As such, constraining the set or
-related origins to those that are likely to be used by a client can help avoid
-commitment of resources that might subsequently go unused.
+The `related` SvcParamKey is a hint and could contain stale, incorrect or
+superfluous information. A client SHOULD implement checks and heuristics that
+limit state or resource commitment based on this information. For example, a
+client could track how often related origins are matched to related resources.
+Notably, the scope of relationships is at the origin level, not any other
+component that might later comprise a URI that is to be fetched. As such,
+constraining the set or related origins to those that are likely to be used by a
+client can help avoid commitment of resources that might subsequently go unused.
 
 HTTP resource relationships might be restricted to authorized clients. Exposing
 those related origins to unauthorised DNS clients could leak sensitive
