@@ -1,17 +1,17 @@
-# Related HTTP Origins
+# RA Preconnect Hint for SVCB/HTTPS RR
 
 This is the working area for the individual Internet-Draft, "Related HTTP Origins".
 
-* [Editor's Copy](https://LPardue.github.io/draft-pardue-httpbis-related-origins/#go.draft-pardue-httpbis-related-origins.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-pardue-httpbis-related-origins)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-pardue-httpbis-related-origins)
-* [Compare Editor's Copy to Individual Draft](https://LPardue.github.io/draft-pardue-httpbis-related-origins/#go.draft-pardue-httpbis-related-origins.diff)
+* [Editor's Copy](https://LPardue.github.io/draft-pardue-httpbis-preconnect-hint-svc-param/#go.draft-pardue-httpbis-preconnect-hint-svc-param.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-pardue-httpbis-preconnect-hint-svc-param)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-pardue-httpbis-preconnect-hint-svc-param)
+* [Compare Editor's Copy to Individual Draft](https://LPardue.github.io/draft-pardue-httpbis-preconnect-hint-svc-param/#go.draft-pardue-httpbis-preconnect-hint-svc-param.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/LPardue/draft-pardue-httpbis-related-origins/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/LPardue/draft-pardue-httpbis-preconnect-hint-svc-param/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
