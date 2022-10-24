@@ -1,4 +1,4 @@
-# RA Preconnect Hint for SVCB/HTTPS RR
+# A Preconnect Hint for SVCB/HTTPS RR
 
 This is the working area for the individual Internet-Draft, "Related HTTP Origins".
 
