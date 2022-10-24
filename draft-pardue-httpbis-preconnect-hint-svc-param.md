@@ -17,7 +17,7 @@ venue:
   mail: "ietf-http-wg@w3.org"
   arch: "https://lists.w3.org/Archives/Public/ietf-http-wg/"
   github: "LPardue/draft-pardue-httpbis-related-origins"
-  latest: "https://LPardue.github.io/draft-pardue-httpbis-related-origins/draft-pardue-httpbis-preconnect-hint-svc-param.html"
+  latest: "https://LPardue.github.io/draft-pardue-httpbis-preconnect-hint-svc-param/draft-pardue-httpbis-preconnect-hint-svc-param.html"
 
 author:
  -
