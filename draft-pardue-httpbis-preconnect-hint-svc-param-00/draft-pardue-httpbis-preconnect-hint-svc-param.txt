@@ -29,10 +29,11 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://LPardue.github.io/draft-pardue-httpbis-related-origins/draft-
-   pardue-httpbis-preconnect-hint-svc-param.html.  Status information
-   for this document may be found at https://datatracker.ietf.org/doc/
-   draft-pardue-httpbis-preconnect-hint-svc-param/.
+   https://LPardue.github.io/draft-pardue-httpbis-preconnect-hint-svc-
+   param/draft-pardue-httpbis-preconnect-hint-svc-param.html.  Status
+   information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-pardue-httpbis-preconnect-
+   hint-svc-param/.
 
    Discussion of this document takes place on the HTTP Working Group
    mailing list (mailto:ietf-http-wg@w3.org), which is archived at
